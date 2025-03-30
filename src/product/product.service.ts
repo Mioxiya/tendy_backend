@@ -22,6 +22,7 @@ export class ProductService {
               frontPrice: dto.frontPrice,
               images: dto.images,
               longImages: dto.longImages,
+              urlto: dto.urlto,
             })),
           },
         },
