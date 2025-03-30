@@ -28,3 +28,35 @@ enum Role {
   USER
   ADMIN
 }
+
+model Product {
+  id         String    @id @default(uuid())
+  name       String
+  categoryId String
+  category   Category  @relation(fields: [categoryId], references: [id])
+  basePrice  Decimal? // 基础价格（可选）
+  frontPrice String // 前端显示价格
+  attributes Json // 属性配置（示例：{尺寸: ["50mm","75mm"], 贴膜: ["光膜","雾膜"]}）
+  variants   Variant[] // 自动生成的变体
+  images     String[] // 主图图片数组
+  longImages String[] // 介绍页长图
+  urlto      String
+}
+
+model Variant {
+  id          String   @id @default(uuid())
+  combination Json // 属性组合（示例：{尺寸: "50mm", 贴膜: "光膜"}）
+  basePrice   Float? // 覆盖价格
+  frontPrice  String // 前端显示价格
+  images      String[] // 覆盖图片
+  longImages  String[] // 介绍页长图
+  urlto       String
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  name     String
+  products Product[]
+}
