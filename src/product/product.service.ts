@@ -3,12 +3,10 @@ import { PrismaService } from '../prisma/prisma.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { generateCombinations } from '../common/utils';
 import { UpdateVariantDto } from './dto/update-variant.dto';
-import { SearchProductDto } from './dto/search-product.dto';
 
 @Injectable()
 export class ProductService {
-  constructor(private readonly prisma: PrismaService) {
-  }
+  constructor(private readonly prisma: PrismaService) {}
 
   async createWithVariants(dto: CreateProductDto) {
     const combinations = generateCombinations(dto.attributes);
