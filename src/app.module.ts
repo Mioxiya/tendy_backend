@@ -10,6 +10,7 @@ import { ProductController } from './product/product.controller';
 import { ProductService } from './product/product.service';
 import { CategoriesController } from './categories/categories.controller';
 import { CategoriesService } from './categories/categories.service';
+import { LiblibAiModule } from './liblib-ai/liblib-ai.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CategoriesService } from './categories/categories.service';
     AuthModule,
     ProductModule,
     CategoriesModule,
+    LiblibAiModule,
   ],
   controllers: [AppController, ProductController, CategoriesController],
   providers: [AppService, ProductService, CategoriesService],
